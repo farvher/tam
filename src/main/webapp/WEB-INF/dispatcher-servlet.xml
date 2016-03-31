@@ -18,6 +18,7 @@
     <mvc:annotation-driven/> 
   
     <mvc:resources mapping="resources/**"  location="/WEB-INF/resources/theme1/"    />
+    <mvc:resources mapping="**"  location="/WEB-INF/resources/theme2/"    />
 
     <bean id="viewResolver"
           class="org.springframework.web.servlet.view.InternalResourceViewResolver"

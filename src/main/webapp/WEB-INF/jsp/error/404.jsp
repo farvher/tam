@@ -14,8 +14,6 @@
 
         <!-- Bootstrap -->
         <link href="<%=request.getContextPath().toString()%>/resources/css/bootstrap.min.css" rel="stylesheet">
-        <link href="<%=request.getContextPath().toString()%>/resources/css/custom.css" rel="stylesheet">
-        <link href="//code.jquery.com/ui/1.11.4/themes/ui-darkness/jquery-ui.css" rel="stylesheet">
 
 
         <!--[if lt IE 9]>
@@ -25,23 +23,36 @@
     </head>
     <body>
         <div class="container">
-            <header>
-                <jsp:include page="components/menu.jsp"/>
-            </header>
+
+
+
+
             <div id="manejador">
-                <%--<jsp:include page="content/filemanager.jsp"/>--%>
+                <h1 class="alert-danger">Error 404</h1>
+                <h2>Archivo NO encontrado</h2>
+                <div class="well ">
+                    ${error}
+
+                </div> 
+
+                <button class="btn btn-danger" onclick="javascript : window.location.href = '/FIleManager/'">Volver al Inicio</button>
+
+
             </div>
-            <footer class="">
-                <jsp:include page="components/footer.jsp"/>
-            </footer>
+
+
+
+
+
         </div>
+
+
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script src="<%=request.getContextPath().toString()%>/resources/js/bootstrap.min.js"></script>
         <script src="<%=request.getContextPath().toString()%>/resources/js/listeners.js" rel="stylesheet"></script>
         <script src="<%=request.getContextPath().toString()%>/resources/js/ajax.js" rel="stylesheet"></script>
-        <script src="<%=request.getContextPath().toString()%>/resources/js/jqueryui/jquery-ui.js" rel="stylesheet"></script>
 
     </body>
 </html>
