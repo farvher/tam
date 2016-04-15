@@ -8,12 +8,14 @@ package co.com.tam.dao;
 import co.com.tam.domain.Usuarios;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
  * @author geotor
  */
+@Repository
 @Transactional
 public class UsuariosDao extends AbstractDao<Usuarios> {
     @PersistenceContext(unitName = "tamjndi")

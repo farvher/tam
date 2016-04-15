@@ -5,10 +5,24 @@
  */
 package co.com.tam.dao;
 
+import java.util.List;
+
 /**
  *
  * @author geotor
  */
-public interface RepositoryDao {
-    
+public interface RepositoryDao<T> {
+
+    public void create(T entity);
+
+    public void update(T entity);
+
+    public void remove(T entity);
+
+    public T find(Object id);
+
+    public List<T> findAll();
+
+    public int count();
+
 }

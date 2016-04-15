@@ -18,7 +18,7 @@ public class HomeController extends BaseController{
     
     @RequestMapping(value = {"/",""})
     public ModelAndView home(ModelAndView mv ){
-        mv.setViewName("sites/index");
+        mv.setViewName("home/index");
         return mv;
     
     }
