@@ -5,6 +5,7 @@
  */
 package co.com.tam.test.dao;
 
+import co.com.tam.dao.UsuariosDao;
 import co.com.tam.domain.Fotos;
 import co.com.tam.domain.Productos;
 import co.com.tam.domain.Tiendas;
@@ -32,11 +33,8 @@ import org.springframework.transaction.annotation.Transactional;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class UsuariosTest {
 
-    private SessionFactory sessionFactory;
-    private Session session = null;
-
     
-    @Ignore
+   
     @Test
     @Transactional
     public void aCreateUser() {
@@ -44,23 +42,10 @@ public class UsuariosTest {
         user.setApellidos("sanmiguel");
         user.setNombres("Farith");
         user.setCedula("1092352729");
-        session.beginTransaction();
-        session.save(user);
-        session.getTransaction().commit();
+        UsuariosDao dao = new UsuariosDao();
+        dao.create(user);
         assertEquals(user, user);
     }
     
-
-    @Before
-    public void configuration() {
-        sessionFactory = HU.getSessionFactory();
-        session = sessionFactory.getCurrentSession();
-    }
-
-    @After
-    public void after() {
-//        session.close();
-//        sessionFactory.close();
-    }
 
 }
