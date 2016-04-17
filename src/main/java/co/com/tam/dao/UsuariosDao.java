@@ -7,7 +7,10 @@ package co.com.tam.dao;
 
 import co.com.tam.domain.Usuarios;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceUnit;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,8 +21,11 @@ import org.springframework.transaction.annotation.Transactional;
 @Repository
 @Transactional
 public class UsuariosDao extends AbstractDao<Usuarios> {
-    @PersistenceContext(unitName = "tamjndi")
+    
+//    @PersistenceUnit(unitName = "tamjndi")
+    @PersistenceContext
     private EntityManager em;
+   
 
     @Override
     protected EntityManager getEntityManager() {

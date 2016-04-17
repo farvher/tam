@@ -5,8 +5,8 @@
         <jta-data-source>tamjndi</jta-data-source>
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
         <properties>
-            <property name="hibernate.show_sql">false</property>
-            <property name="hibernate.hbm2ddl.auto">update</property>
+            <property name="hibernate.show_sql" value="false"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
             
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
             <property name="javax.persistence.jdbc.user" value="root"/>
@@ -16,6 +16,7 @@
             <property name="hibernate.max_fetch_depth" value="3"/>
             
         
+<!--           
             <mapping class="co.com.tam.domain.Usuarios"/>
             <mapping class="co.com.tam.domain.Ciudades"/>
             <mapping class="co.com.tam.domain.Elementos"/>
@@ -23,14 +24,15 @@
             <mapping class="co.com.tam.domain.Fotos"/>
             <mapping class="co.com.tam.domain.Generos"/>
             <mapping class="co.com.tam.domain.Marcas"/>
-            <mapping class="co.com.tam.domain.Productos"/>
+            <mapping class="co.com.tam.domain.Productos"/>  
             <mapping class="co.com.tam.domain.Roles"/>
             <mapping class="co.com.tam.domain.Sucursales"/>
             <mapping class="co.com.tam.domain.Tiendas"/>
             <mapping class="co.com.tam.domain.TipoIdentificaciones"/>
             <mapping class="co.com.tam.domain.UnidadMedidas"/>
-            <mapping class="co.com.tam.domain.UsuariosTiendas"/>
+            <mapping class="co.com.tam.domain.UsuariosTiendas"/>-->
         
         </properties>
+       
     </persistence-unit>
 </persistence>

@@ -11,7 +11,6 @@ import org.springframework.stereotype.Controller;
  *
  * @author geotor
  */
-@Controller
 public class ResultadosProductosController extends HomeController{
     
 }

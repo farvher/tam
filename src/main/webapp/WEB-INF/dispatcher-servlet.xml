@@ -20,23 +20,21 @@
     <mvc:resources mapping="resources/**"  location="/WEB-INF/resources/theme1/"    />
     <mvc:resources mapping="**"  location="/WEB-INF/resources/theme2/"    />
     
+    <bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+        <property name="jndiName" value="tamjndi" />
+    </bean>
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
     
-<!--    <bean id="themeSource"
-          class="org.springframework.ui.context.support.ResourceBundleThemeSource">
-        <property name="basenamePrefix" value="themes-" />
+    <!-- Este bean es publicado desde el persistence.xml -->
+    <bean id="entityManagerFactory" class="org.springframework.jndi.JndiObjectFactoryBean">
+        <property name="dataSource" value="dataSource" />
     </bean>
- 
-     Theme Change Interceptor and Resolver definition 
-    <bean id="themeChangeInterceptor"
-      class="org.springframework.web.servlet.theme.ThemeChangeInterceptor">
-        <property name="paramName" value="theme" />
-    </bean>
-    <bean id="themeResolver"
-      class="org.springframework.web.servlet.theme.CookieThemeResolver">
-        <property name="defaultThemeName" value="default" />
-    </bean>
-    -->
 
+ 
+
+    
     <bean id="viewResolver"
           class="org.springframework.web.servlet.view.InternalResourceViewResolver"
           p:prefix="/WEB-INF/jsp/"

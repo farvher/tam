@@ -34,7 +34,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class UsuariosTest {
 
     
-   
+   @Ignore
     @Test
     @Transactional
     public void aCreateUser() {
