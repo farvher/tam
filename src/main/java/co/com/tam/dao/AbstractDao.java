@@ -14,6 +14,9 @@ import javax.persistence.EntityManager;
  */
 public abstract class AbstractDao<T> {
     private Class<T> entityClass;
+    
+    
+    
 
     public AbstractDao(Class<T> entityClass) {
         this.entityClass = entityClass;

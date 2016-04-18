@@ -23,17 +23,14 @@
     <bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
         <property name="jndiName" value="tamjndi" />
     </bean>
-    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
-        <property name="dataSource" ref="dataSource"/>
-    </bean>
+       
+   
+   
     
-    <!-- Este bean es publicado desde el persistence.xml -->
     <bean id="entityManagerFactory" class="org.springframework.jndi.JndiObjectFactoryBean">
-        <property name="dataSource" value="dataSource" />
+        <property name="jndiName" value="tamjndi" />
     </bean>
-
  
-
     
     <bean id="viewResolver"
           class="org.springframework.web.servlet.view.InternalResourceViewResolver"

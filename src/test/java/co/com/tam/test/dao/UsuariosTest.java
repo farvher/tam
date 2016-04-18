@@ -10,7 +10,6 @@ import co.com.tam.domain.Fotos;
 import co.com.tam.domain.Productos;
 import co.com.tam.domain.Tiendas;
 import co.com.tam.domain.Usuarios;
-import co.com.tam.util.HU;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.junit.After;

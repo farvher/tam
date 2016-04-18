@@ -1,38 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
     <persistence-unit name="tamjndi" transaction-type="JTA">
-        <provider>org.hibernate.ejb.HibernatePersistence</provider>
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <jta-data-source>tamjndi</jta-data-source>
-        <exclude-unlisted-classes>false</exclude-unlisted-classes>
+        
+      
         <properties>
-            <property name="hibernate.show_sql" value="false"/>
+            <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.hbm2ddl.auto" value="update"/>
-            
-            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
-            <property name="javax.persistence.jdbc.user" value="root"/>
-            <property name="javax.persistence.jdbc.password" value="123456"/>
-            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/tam?zeroDateTimeBehavior=convertToNull"/>
+            <property name="hibernate.connection.autocommit" value="false" />
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
             <property name="hibernate.max_fetch_depth" value="3"/>
-            
         
-<!--           
-            <mapping class="co.com.tam.domain.Usuarios"/>
-            <mapping class="co.com.tam.domain.Ciudades"/>
-            <mapping class="co.com.tam.domain.Elementos"/>
-            <mapping class="co.com.tam.domain.Estados"/>
-            <mapping class="co.com.tam.domain.Fotos"/>
-            <mapping class="co.com.tam.domain.Generos"/>
-            <mapping class="co.com.tam.domain.Marcas"/>
-            <mapping class="co.com.tam.domain.Productos"/>  
-            <mapping class="co.com.tam.domain.Roles"/>
-            <mapping class="co.com.tam.domain.Sucursales"/>
-            <mapping class="co.com.tam.domain.Tiendas"/>
-            <mapping class="co.com.tam.domain.TipoIdentificaciones"/>
-            <mapping class="co.com.tam.domain.UnidadMedidas"/>
-            <mapping class="co.com.tam.domain.UsuariosTiendas"/>-->
+            
+    
         
         </properties>
-       
+        
+        
+        
     </persistence-unit>
 </persistence>
