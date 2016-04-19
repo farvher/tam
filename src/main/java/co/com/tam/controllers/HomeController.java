@@ -5,7 +5,7 @@
  */
 package co.com.tam.controllers;
 
-import co.com.tam.dao.UsuariosDao;
+import co.com.tam.dao.impl.UsuariosDaoImp;
 import co.com.tam.domain.Usuarios;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +22,7 @@ public class HomeController extends BaseController{
     
     
     @Autowired
-    UsuariosDao repo ;
+    UsuariosDaoImp repo ;
     
     @RequestMapping(value = {"/",""})
     public ModelAndView home(ModelAndView mv ){

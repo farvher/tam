@@ -5,7 +5,7 @@
  */
 package co.com.tam.test.dao;
 
-import co.com.tam.dao.UsuariosDao;
+import co.com.tam.dao.impl.UsuariosDaoImp;
 import co.com.tam.domain.Fotos;
 import co.com.tam.domain.Productos;
 import co.com.tam.domain.Tiendas;
@@ -41,7 +41,7 @@ public class UsuariosTest {
         user.setApellidos("sanmiguel");
         user.setNombres("Farith");
         user.setCedula("1092352729");
-        UsuariosDao dao = new UsuariosDao();
+        UsuariosDaoImp dao = new UsuariosDaoImp();
         dao.create(user);
         assertEquals(user, user);
     }

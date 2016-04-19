@@ -5,26 +5,10 @@
  */
 package co.com.tam.dao;
 
-import co.com.tam.domain.Productos;
-import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import org.springframework.transaction.annotation.Transactional;
-
 /**
  *
  * @author geotor
  */
-@Transactional
-public class ProductosDao extends AbstractDao<Productos> {
-
-    @Override
-    protected EntityManager getEntityManager() {
-        return em;
-    }
-
-    public ProductosDao() {
-        super(Productos.class);
-    }
+public interface ProductosDao {
     
 }

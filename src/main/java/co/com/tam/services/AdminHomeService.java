@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package co.com.tam.dao;
+package co.com.tam.services;
 
 /**
  *
  * @author geotor
  */
-public interface EstadosDao {
+public interface AdminHomeService {
     
 }

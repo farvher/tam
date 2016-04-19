@@ -5,25 +5,10 @@
  */
 package co.com.tam.dao;
 
-import co.com.tam.domain.Marcas;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import org.springframework.transaction.annotation.Transactional;
-
 /**
  *
  * @author geotor
  */
-@Transactional
-public class MarcasDao extends AbstractDao<Marcas> {
-
-    @Override
-    protected EntityManager getEntityManager() {
-        return em;
-    }
-
-    public MarcasDao() {
-        super(Marcas.class);
-    }
+public interface MarcasDao {
     
 }

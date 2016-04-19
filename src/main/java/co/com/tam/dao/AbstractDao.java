@@ -8,9 +8,10 @@ package co.com.tam.dao;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceUnit;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
@@ -34,10 +35,12 @@ public abstract class AbstractDao<T> {
 
     protected abstract EntityManager getEntityManager();
 
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
     public void create(T entity) {
         getEntityManager().persist(entity);
     }
 
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
     public void edit(T entity) {
         getEntityManager().merge(entity);
     }
@@ -46,16 +49,19 @@ public abstract class AbstractDao<T> {
         getEntityManager().remove(getEntityManager().merge(entity));
     }
 
+    @Transactional(readOnly = true)
     public T find(Object id) {
         return getEntityManager().find(entityClass, id);
     }
 
+    @Transactional(readOnly = true)
     public List<T> findAll() {
         javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
         cq.select(cq.from(entityClass));
         return getEntityManager().createQuery(cq).getResultList();
     }
 
+    @Transactional(readOnly = true)
     public List<T> findRange(int[] range) {
         javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
         cq.select(cq.from(entityClass));
@@ -65,6 +71,7 @@ public abstract class AbstractDao<T> {
         return q.getResultList();
     }
 
+    @Transactional(readOnly = true)
     public int count() {
         javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
         javax.persistence.criteria.Root<T> rt = cq.from(entityClass);

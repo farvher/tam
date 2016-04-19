@@ -5,25 +5,10 @@
  */
 package co.com.tam.dao;
 
-import co.com.tam.domain.Generos;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import org.springframework.transaction.annotation.Transactional;
-
 /**
  *
  * @author geotor
  */
-@Transactional
-public class GenerosDao extends AbstractDao<Generos> {
-
-    @Override
-    protected EntityManager getEntityManager() {
-        return em;
-    }
-
-    public GenerosDao() {
-        super(Generos.class);
-    }
+public interface GenerosDao {
     
 }

@@ -5,26 +5,10 @@
  */
 package co.com.tam.dao;
 
-import co.com.tam.domain.UnidadMedidas;
-import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import org.springframework.transaction.annotation.Transactional;
-
 /**
  *
  * @author geotor
  */
-@Transactional
-public class UnidadMedidasDao extends AbstractDao<UnidadMedidas> {
-
-    @Override
-    protected EntityManager getEntityManager() {
-        return em;
-    }
-
-    public UnidadMedidasDao() {
-        super(UnidadMedidas.class);
-    }
+public interface UnidadMedidasDao {
     
 }

@@ -5,26 +5,10 @@
  */
 package co.com.tam.dao;
 
-import co.com.tam.domain.Ciudades;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import org.springframework.transaction.annotation.Transactional;
-
 /**
  *
  * @author geotor
  */
-@Transactional
-public class CiudadesDao extends AbstractDao<Ciudades> {
-   
-
-    @Override
-    protected EntityManager getEntityManager() {
-        return em;
-    }
-
-    public CiudadesDao() {
-        super(Ciudades.class);
-    }
+public interface CiudadesDao {
     
 }

@@ -5,25 +5,10 @@
  */
 package co.com.tam.dao;
 
-import co.com.tam.domain.TipoIdentificaciones;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import org.springframework.transaction.annotation.Transactional;
-
 /**
  *
  * @author geotor
  */
-@Transactional
-public class TipoIdentificacionesDao extends AbstractDao<TipoIdentificaciones> {
-
-    @Override
-    protected EntityManager getEntityManager() {
-        return em;
-    }
-
-    public TipoIdentificacionesDao() {
-        super(TipoIdentificaciones.class);
-    }
+public interface TipoIdentificacionesDao {
     
 }

@@ -5,25 +5,10 @@
  */
 package co.com.tam.dao;
 
-import co.com.tam.domain.Roles;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import org.springframework.transaction.annotation.Transactional;
-
 /**
  *
  * @author geotor
  */
-@Transactional
-public class RolesDao extends AbstractDao<Roles> {
-
-    @Override
-    protected EntityManager getEntityManager() {
-        return em;
-    }
-
-    public RolesDao() {
-        super(Roles.class);
-    }
+public interface RolesDao {
     
 }
