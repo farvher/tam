@@ -23,16 +23,11 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class UsuariosDao extends AbstractDao<Usuarios> {
 
-    
-    
-    @PersistenceUnit
-    EntityManagerFactory emf ;
-
 
     @Override
     protected EntityManager getEntityManager() {
-       
-       return  emf.createEntityManager();
+
+        return emf.createEntityManager();
     }
 
     public UsuariosDao() {

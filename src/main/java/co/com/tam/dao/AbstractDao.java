@@ -7,6 +7,9 @@ package co.com.tam.dao;
 
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.PersistenceUnit;
 
 /**
  *
@@ -16,6 +19,8 @@ public abstract class AbstractDao<T> {
     private Class<T> entityClass;
     
     
+    @PersistenceUnit
+    public EntityManagerFactory emf ;
     
 
     public AbstractDao(Class<T> entityClass) {
