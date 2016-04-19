@@ -16,8 +16,6 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Transactional
 public class TipoIdentificacionesDao extends AbstractDao<TipoIdentificaciones> {
-    @PersistenceContext(unitName = "tamjndi")
-    private EntityManager em;
 
     @Override
     protected EntityManager getEntityManager() {

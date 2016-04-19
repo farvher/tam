@@ -16,8 +16,6 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Transactional
 public class GenerosDao extends AbstractDao<Generos> {
-    @PersistenceContext(unitName = "tamjndi")
-    private EntityManager em;
 
     @Override
     protected EntityManager getEntityManager() {

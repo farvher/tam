@@ -16,8 +16,6 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Transactional
 public class EstadosDao extends AbstractDao<Estados> {
-    @PersistenceContext(unitName = "tamjndi")
-    private EntityManager em;
 
     @Override
     protected EntityManager getEntityManager() {

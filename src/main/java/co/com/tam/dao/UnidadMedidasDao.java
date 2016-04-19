@@ -17,8 +17,6 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Transactional
 public class UnidadMedidasDao extends AbstractDao<UnidadMedidas> {
-    @PersistenceContext(unitName = "tamjndi")
-    private EntityManager em;
 
     @Override
     protected EntityManager getEntityManager() {

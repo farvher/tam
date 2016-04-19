@@ -16,8 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Transactional
 public class CiudadesDao extends AbstractDao<Ciudades> {
-    @PersistenceContext(unitName = "tamjndi")
-    private EntityManager em;
+   
 
     @Override
     protected EntityManager getEntityManager() {

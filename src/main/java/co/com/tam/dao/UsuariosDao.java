@@ -27,7 +27,7 @@ public class UsuariosDao extends AbstractDao<Usuarios> {
     @Override
     protected EntityManager getEntityManager() {
 
-        return emf.createEntityManager();
+        return em;
     }
 
     public UsuariosDao() {
