@@ -5,7 +5,7 @@
  */
 package co.com.tam.controllers;
 
-import co.com.tam.dao.impl.UsuariosDaoImp;
+import co.com.tam.dao.UsuariosDao;
 import co.com.tam.domain.Usuarios;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,12 +22,12 @@ public class HomeController extends BaseController{
     
     
     @Autowired
-    UsuariosDaoImp repo ;
+    UsuariosDao repo ;
     
     @RequestMapping(value = {"/",""})
     public ModelAndView home(ModelAndView mv ){
         mv.setViewName("home/index");
-        List <Usuarios> users = repo.findAll();
+        List <Usuarios> users = repo.getUsuarios();
         System.out.println("encontrados "+ users.size());
         
         return mv;

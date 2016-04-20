@@ -5,10 +5,17 @@
  */
 package co.com.tam.dao;
 
+import co.com.tam.domain.Usuarios;
+import java.util.List;
+
 /**
  *
  * @author geotor
  */
 public interface UsuariosDao {
+    
+    
+    public List<Usuarios> getUsuario (String cedula);
+       public List<Usuarios> getUsuarios() ;
     
 }

@@ -10,6 +10,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceUnit;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,16 +20,14 @@ import org.springframework.transaction.annotation.Transactional;
  * @author geotor
  */
 public abstract class AbstractDao<T> {
+
     private Class<T> entityClass;
-    
-    
+
     @PersistenceUnit
-    public EntityManagerFactory emf ;
-    
+    public EntityManagerFactory emf;
+
     @PersistenceContext
     public EntityManager em;
-    
-    
 
     public AbstractDao(Class<T> entityClass) {
         this.entityClass = entityClass;
@@ -47,6 +47,11 @@ public abstract class AbstractDao<T> {
 
     public void remove(T entity) {
         getEntityManager().remove(getEntityManager().merge(entity));
+    }
+
+    public void remove(final Long id) {
+        Object entity = getEntityManager().find(entityClass, id);
+        getEntityManager().remove(entity);
     }
 
     @Transactional(readOnly = true)
@@ -79,5 +84,28 @@ public abstract class AbstractDao<T> {
         javax.persistence.Query q = getEntityManager().createQuery(cq);
         return ((Long) q.getSingleResult()).intValue();
     }
-    
+
+    @Transactional
+    public void reLoad(T entity) {
+        this.getEntityManager().refresh(entity);
+    }
+
+    @Transactional(readOnly = true)
+    public List<T> findByFieldsIsNull(String field) {
+        CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
+        Root<T> root = cq.from(entityClass);
+        cq.select(root);
+        cq.where(root.get(field).isNull());
+        return getEntityManager().createQuery(cq).getResultList();
+    }
+
+    @Transactional(readOnly = true)
+    public List<T> findByFieldsIsEqual(String field, Object value) {
+        CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
+        Root<T> root = cq.from(entityClass);
+        cq.select(root);
+        cq.where(getEntityManager().getCriteriaBuilder().equal(root.get(field), value));
+        return getEntityManager().createQuery(cq).getResultList();
+    }
+
 }
