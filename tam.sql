@@ -50,13 +50,13 @@ DROP TABLE IF EXISTS `elementos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `elementos` (
-  `elementoid` int(10) NOT NULL DEFAULT '0',
-  `productoid` int(10) DEFAULT NULL,
+  `elementoid` int(11) NOT NULL,
+  `descripcion` longtext,
   `elemento` varchar(50) DEFAULT NULL,
-  `descripcion` text,
+  `productoid` int(11) DEFAULT NULL,
   PRIMARY KEY (`elementoid`),
-  KEY `productoid` (`productoid`),
-  CONSTRAINT `elementos_ibfk_1` FOREIGN KEY (`productoid`) REFERENCES `productos` (`productoid`)
+  KEY `FK_pkov06gy9u6i4s6axrh3j8ymd` (`productoid`),
+  CONSTRAINT `FK_pkov06gy9u6i4s6axrh3j8ymd` FOREIGN KEY (`productoid`) REFERENCES `productos` (`productoid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -100,19 +100,19 @@ DROP TABLE IF EXISTS `fotos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `fotos` (
-  `fotoid` int(10) NOT NULL DEFAULT '0',
-  `productoid` int(10) DEFAULT NULL,
+  `fotoid` int(11) NOT NULL,
+  `comentario` varchar(200) DEFAULT NULL,
+  `creada` date DEFAULT NULL,
+  `ext` varchar(10) DEFAULT NULL,
   `fotonombre` varchar(50) DEFAULT NULL,
   `fototitle` varchar(50) DEFAULT NULL,
   `fotourl` varchar(100) DEFAULT NULL,
-  `creada` date DEFAULT NULL,
   `modificada` date DEFAULT NULL,
-  `ext` varchar(10) DEFAULT NULL,
-  `posicion` int(10) DEFAULT NULL,
-  `comentario` varchar(200) DEFAULT NULL,
+  `posicion` int(11) DEFAULT NULL,
+  `productoid` int(11) DEFAULT NULL,
   PRIMARY KEY (`fotoid`),
-  KEY `productoid` (`productoid`),
-  CONSTRAINT `fotos_ibfk_1` FOREIGN KEY (`productoid`) REFERENCES `productos` (`productoid`)
+  KEY `FK_hxmnrii5hq4tdkw82rddus79i` (`productoid`),
+  CONSTRAINT `FK_hxmnrii5hq4tdkw82rddus79i` FOREIGN KEY (`productoid`) REFERENCES `productos` (`productoid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -156,7 +156,7 @@ DROP TABLE IF EXISTS `marcas`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `marcas` (
-  `marcaid` int(10) NOT NULL DEFAULT '0',
+  `marcaid` int(11) NOT NULL,
   `marca` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`marcaid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -179,33 +179,33 @@ DROP TABLE IF EXISTS `productos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `productos` (
-  `productoid` int(10) NOT NULL DEFAULT '0',
-  `tiendaid` int(10) DEFAULT NULL,
-  `marcaid` int(10) DEFAULT NULL,
-  `estadoid` int(2) DEFAULT NULL,
+  `productoid` int(11) NOT NULL,
+  `cantidadelementos` int(11) DEFAULT NULL,
+  `condescuento` smallint(6) DEFAULT NULL,
   `creado` date DEFAULT NULL,
+  `descripcion` longtext,
+  `descuento` int(11) DEFAULT NULL,
+  `destacado` smallint(6) DEFAULT NULL,
+  `DetalleProductoHtml` longtext,
+  `diponible` smallint(6) DEFAULT NULL,
   `modificado` date DEFAULT NULL,
-  `nrofotos` int(10) DEFAULT NULL,
-  `preciounidad` bigint(20) DEFAULT NULL,
-  `unidadmedidaid` int(2) DEFAULT NULL,
-  `descripcion` text,
-  `diponible` tinyint(4) DEFAULT NULL,
+  `nrofotos` int(11) DEFAULT NULL,
+  `preciounidad` decimal(19,2) DEFAULT NULL,
   `urlcanonical` varchar(100) DEFAULT NULL,
-  `destacado` tinyint(4) DEFAULT NULL,
   `urlvideo` varchar(100) DEFAULT NULL,
-  `condescuento` tinyint(4) DEFAULT NULL,
-  `descuento` int(10) DEFAULT NULL,
-  `DetalleProductoHtml` text,
-  `cantidadelementos` int(5) DEFAULT NULL,
+  `estadoid` int(11) DEFAULT NULL,
+  `marcaid` int(11) DEFAULT NULL,
+  `tiendaid` int(11) DEFAULT NULL,
+  `unidadmedidaid` int(11) DEFAULT NULL,
   PRIMARY KEY (`productoid`),
-  KEY `tiendaid` (`tiendaid`),
-  KEY `unidadmedidaid` (`unidadmedidaid`),
-  KEY `estadoid` (`estadoid`),
-  KEY `marcaid` (`marcaid`),
-  CONSTRAINT `productos_ibfk_4` FOREIGN KEY (`marcaid`) REFERENCES `marcas` (`marcaid`),
-  CONSTRAINT `productos_ibfk_1` FOREIGN KEY (`tiendaid`) REFERENCES `tiendas` (`tiendaid`),
-  CONSTRAINT `productos_ibfk_2` FOREIGN KEY (`unidadmedidaid`) REFERENCES `unidad_medidas` (`unidadmedidaid`),
-  CONSTRAINT `productos_ibfk_3` FOREIGN KEY (`estadoid`) REFERENCES `estados` (`estadoid`)
+  KEY `FK_3fg3i8hl8dwe300309lcjx505` (`estadoid`),
+  KEY `FK_hhfluhbxojw08n3txw073puut` (`marcaid`),
+  KEY `FK_svikvs6fv9e7nhqb2s843hg8w` (`tiendaid`),
+  KEY `FK_gdnp0amdb25kq2ef4cwyua1hx` (`unidadmedidaid`),
+  CONSTRAINT `FK_gdnp0amdb25kq2ef4cwyua1hx` FOREIGN KEY (`unidadmedidaid`) REFERENCES `unidad_medidas` (`unidadmedidaid`),
+  CONSTRAINT `FK_3fg3i8hl8dwe300309lcjx505` FOREIGN KEY (`estadoid`) REFERENCES `estados` (`estadoid`),
+  CONSTRAINT `FK_hhfluhbxojw08n3txw073puut` FOREIGN KEY (`marcaid`) REFERENCES `marcas` (`marcaid`),
+  CONSTRAINT `FK_svikvs6fv9e7nhqb2s843hg8w` FOREIGN KEY (`tiendaid`) REFERENCES `tiendas` (`tiendaid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -250,19 +250,19 @@ DROP TABLE IF EXISTS `sucursales`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `sucursales` (
-  `sucursalid` int(10) NOT NULL DEFAULT '0',
-  `tiendaid` int(10) DEFAULT NULL,
-  `direccion` varchar(50) DEFAULT NULL,
-  `telefono` varchar(20) DEFAULT NULL,
+  `sucursalid` int(11) NOT NULL,
   `celular` varchar(20) DEFAULT NULL,
   `correo` varchar(50) DEFAULT NULL,
   `creada` date DEFAULT NULL,
-  `modificada` date DEFAULT NULL,
+  `direccion` varchar(50) DEFAULT NULL,
   `latitud` varchar(50) DEFAULT NULL,
   `longitud` varchar(50) DEFAULT NULL,
+  `modificada` date DEFAULT NULL,
+  `telefono` varchar(20) DEFAULT NULL,
+  `tiendaid` int(11) DEFAULT NULL,
   PRIMARY KEY (`sucursalid`),
-  KEY `tiendaid` (`tiendaid`),
-  CONSTRAINT `sucursales_ibfk_1` FOREIGN KEY (`tiendaid`) REFERENCES `tiendas` (`tiendaid`)
+  KEY `FK_r1q3iiinmljuir3x6tb7u6wdx` (`tiendaid`),
+  CONSTRAINT `FK_r1q3iiinmljuir3x6tb7u6wdx` FOREIGN KEY (`tiendaid`) REFERENCES `tiendas` (`tiendaid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -283,15 +283,15 @@ DROP TABLE IF EXISTS `tiendas`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tiendas` (
-  `tiendaid` int(10) NOT NULL DEFAULT '0',
-  `nombretienda` varchar(50) DEFAULT NULL,
-  `titulotienda` varchar(50) DEFAULT NULL,
-  `urllogo` varchar(100) DEFAULT NULL,
-  `estilocss` varchar(50) DEFAULT NULL,
-  `telatencioncliente` varchar(50) DEFAULT NULL,
+  `tiendaid` int(11) NOT NULL,
   `correocontactenos` varchar(50) DEFAULT NULL,
-  `quienessomos` text,
+  `estilocss` varchar(50) DEFAULT NULL,
+  `nombretienda` varchar(50) DEFAULT NULL,
+  `quienessomos` longtext,
+  `telatencioncliente` varchar(50) DEFAULT NULL,
+  `titulotienda` varchar(50) DEFAULT NULL,
   `urlicon` varchar(50) DEFAULT NULL,
+  `urllogo` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`tiendaid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -336,7 +336,7 @@ DROP TABLE IF EXISTS `unidad_medidas`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `unidad_medidas` (
-  `unidadmedidaid` int(2) NOT NULL DEFAULT '0',
+  `unidadmedidaid` int(11) NOT NULL,
   `unidadmedida` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`unidadmedidaid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -359,36 +359,36 @@ DROP TABLE IF EXISTS `usuarios`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `usuarios` (
-  `usuarioid` int(10) NOT NULL DEFAULT '0',
-  `cedula` varchar(20) DEFAULT NULL,
-  `nombres` varchar(50) DEFAULT NULL,
+  `usuarioid` int(11) NOT NULL AUTO_INCREMENT,
   `apellidos` varchar(50) DEFAULT NULL,
-  `nacimiento` date DEFAULT NULL,
-  `generoid` int(2) DEFAULT NULL,
+  `cedula` varchar(20) DEFAULT NULL,
+  `celular` varchar(20) DEFAULT NULL,
+  `clave` varchar(100) DEFAULT NULL,
+  `correo` varchar(50) DEFAULT NULL,
+  `creado` date DEFAULT NULL,
   `direccion` varchar(100) DEFAULT NULL,
   `direccion2` varchar(100) DEFAULT NULL,
-  `creado` date DEFAULT NULL,
   `modificado` date DEFAULT NULL,
+  `nacimiento` date DEFAULT NULL,
+  `nombres` varchar(50) DEFAULT NULL,
   `telefono` varchar(20) DEFAULT NULL,
-  `celular` varchar(20) DEFAULT NULL,
-  `correo` varchar(50) DEFAULT NULL,
-  `clave` varchar(100) DEFAULT NULL,
-  `tipoidentificacionid` int(2) DEFAULT NULL,
-  `ciudad_residencia` int(10) DEFAULT NULL,
-  `estadoid` int(2) DEFAULT NULL,
-  `rolid` int(2) DEFAULT NULL,
+  `ciudad_residencia` int(11) DEFAULT NULL,
+  `estadoid` int(11) DEFAULT NULL,
+  `generoid` int(11) DEFAULT NULL,
+  `rolid` int(11) DEFAULT NULL,
+  `tipoidentificacionid` int(11) DEFAULT NULL,
   PRIMARY KEY (`usuarioid`),
-  KEY `estadoid` (`estadoid`),
-  KEY `ciudad_residencia` (`ciudad_residencia`),
-  KEY `tipoidentificacionid` (`tipoidentificacionid`),
-  KEY `generoid` (`generoid`),
-  KEY `rolid` (`rolid`),
-  CONSTRAINT `usuarios_ibfk_5` FOREIGN KEY (`rolid`) REFERENCES `roles` (`rolid`),
-  CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`estadoid`) REFERENCES `estados` (`estadoid`),
-  CONSTRAINT `usuarios_ibfk_2` FOREIGN KEY (`ciudad_residencia`) REFERENCES `ciudades` (`ciudadid`),
-  CONSTRAINT `usuarios_ibfk_3` FOREIGN KEY (`tipoidentificacionid`) REFERENCES `tipo_identificaciones` (`tipoidentificacionid`),
-  CONSTRAINT `usuarios_ibfk_4` FOREIGN KEY (`generoid`) REFERENCES `generos` (`generoid`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  KEY `FK_xqhrao9th4ydwiyr4hbdgtg2` (`ciudad_residencia`),
+  KEY `FK_jnr1ybbamasp9fyx5oaigpyn2` (`estadoid`),
+  KEY `FK_mv1t06nf3gxwph1a69pc9120j` (`generoid`),
+  KEY `FK_ekwi59fnreo01drgowy8x3c1r` (`rolid`),
+  KEY `FK_6b7njo09rd47d7qj1tgead7p` (`tipoidentificacionid`),
+  CONSTRAINT `FK_6b7njo09rd47d7qj1tgead7p` FOREIGN KEY (`tipoidentificacionid`) REFERENCES `tipo_identificaciones` (`tipoidentificacionid`),
+  CONSTRAINT `FK_ekwi59fnreo01drgowy8x3c1r` FOREIGN KEY (`rolid`) REFERENCES `roles` (`rolid`),
+  CONSTRAINT `FK_jnr1ybbamasp9fyx5oaigpyn2` FOREIGN KEY (`estadoid`) REFERENCES `estados` (`estadoid`),
+  CONSTRAINT `FK_mv1t06nf3gxwph1a69pc9120j` FOREIGN KEY (`generoid`) REFERENCES `generos` (`generoid`),
+  CONSTRAINT `FK_xqhrao9th4ydwiyr4hbdgtg2` FOREIGN KEY (`ciudad_residencia`) REFERENCES `ciudades` (`ciudadid`)
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -397,6 +397,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
+INSERT INTO `usuarios` VALUES (12,'sanmiguel','1092352729',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Farith',NULL,NULL,NULL,NULL,NULL,NULL),(13,'Lopez','1092352729',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Farith',NULL,NULL,NULL,NULL,NULL,NULL),(14,'sanmiguel','1092352729',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Farith',NULL,NULL,NULL,NULL,NULL,NULL),(15,'sanmiguel','1092352729',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Farith',NULL,NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -408,14 +409,14 @@ DROP TABLE IF EXISTS `usuarios_tiendas`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `usuarios_tiendas` (
-  `id` int(10) NOT NULL DEFAULT '0',
-  `tiendaid` int(10) DEFAULT NULL,
-  `usuarioid` int(10) DEFAULT NULL,
+  `id` int(11) NOT NULL,
+  `tiendaid` int(11) DEFAULT NULL,
+  `usuarioid` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `usuarioid` (`usuarioid`),
-  KEY `tiendaid` (`tiendaid`),
-  CONSTRAINT `usuarios_tiendas_ibfk_2` FOREIGN KEY (`tiendaid`) REFERENCES `tiendas` (`tiendaid`),
-  CONSTRAINT `usuarios_tiendas_ibfk_1` FOREIGN KEY (`usuarioid`) REFERENCES `usuarios` (`usuarioid`)
+  KEY `FK_jnm4if8axpn2uh6gse1d06pvy` (`tiendaid`),
+  KEY `FK_3n192ugvs8qa7j9dyhrb4kjmt` (`usuarioid`),
+  CONSTRAINT `FK_3n192ugvs8qa7j9dyhrb4kjmt` FOREIGN KEY (`usuarioid`) REFERENCES `usuarios` (`usuarioid`),
+  CONSTRAINT `FK_jnm4if8axpn2uh6gse1d06pvy` FOREIGN KEY (`tiendaid`) REFERENCES `tiendas` (`tiendaid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -437,4 +438,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-04-14 12:07:04
+-- Dump completed on 2016-04-21  8:27:51
