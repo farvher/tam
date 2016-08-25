@@ -7,6 +7,7 @@ package co.com.tam.controllers;
 
 import co.com.tam.dao.UsuariosDao;
 import co.com.tam.domain.Usuarios;
+import co.com.tam.util.Util;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,20 +19,24 @@ import org.springframework.web.servlet.ModelAndView;
  * @author geotor
  */
 @Controller
-public class HomeController extends BaseController{
-    
-    
+public class HomeController extends BaseController {
+
     @Autowired
-    UsuariosDao repo ;
-    
-    @RequestMapping(value = {"/",""})
-    public ModelAndView home(ModelAndView mv ){
-        mv.setViewName("home/index");
-        List <Usuarios> users = repo.getUsuarios();
-        System.out.println("encontrados "+ users.size());
-        
+    UsuariosDao repo;
+
+    @RequestMapping(value = {"/", ""})
+    public ModelAndView home(ModelAndView mv) {
+        mv.setViewName(Util.prop("view.home"));
+        List<Usuarios> users = repo.getUsuarios();
+        System.out.println("encontrados " + users.size());
+
         return mv;
-    
+
     }
-    
+   @RequestMapping(value = {"/login", "/login/"})
+    public ModelAndView login(ModelAndView mv) {
+        mv.setViewName(Util.prop("view.login"));
+        return mv;
+    }
+
 }

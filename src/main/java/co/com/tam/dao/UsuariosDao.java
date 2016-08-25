@@ -13,9 +13,9 @@ import java.util.List;
  * @author geotor
  */
 public interface UsuariosDao {
-    
-    
-    public List<Usuarios> getUsuario (String cedula);
-       public List<Usuarios> getUsuarios() ;
-    
+
+    public List<Usuarios> getUsuario(String cedula);
+    public List<Usuarios> getUsuarios();
+    public Usuarios getUser(String email);
+
 }

@@ -1,0 +1,66 @@
+<%-- 
+    Document   : 403
+    Created on : 24/08/2016, 02:58:02 PM
+    Author     : geotor
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib  prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" href="<%=request.getContextPath().toString()%>/resources/img/favicon.ico"/>
+        <title>Tam Proyect</title>
+
+        <!-- Bootstrap -->
+        <link href="<%=request.getContextPath().toString()%>/resources/css/bootstrap.min.css" rel="stylesheet">
+
+
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <div class="container">
+
+
+
+
+            <div id="manejador">
+                <h1 class="alert-danger">Error 403</h1>
+                <h2>Acceso Denegadp</h2>
+                <div class="well ">
+                    <form action="/logout" method="post">
+                        <input type="submit" class="button red big" value="Sign in as different user" /> <input
+                            type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                    </form>  
+
+                </div> 
+
+
+
+            </div>
+
+
+
+
+
+        </div>
+
+
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="<%=request.getContextPath().toString()%>/resources/js/bootstrap.min.js"></script>
+        <script src="<%=request.getContextPath().toString()%>/resources/js/listeners.js" rel="stylesheet"></script>
+        <script src="<%=request.getContextPath().toString()%>/resources/js/ajax.js" rel="stylesheet"></script>
+
+    </body>
+</html>

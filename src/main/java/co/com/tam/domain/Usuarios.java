@@ -50,6 +50,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Usuarios.findByCorreo", query = "SELECT u FROM Usuarios u WHERE u.correo = :correo"),
     @NamedQuery(name = "Usuarios.findByClave", query = "SELECT u FROM Usuarios u WHERE u.clave = :clave")})
 public class Usuarios implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -110,7 +111,30 @@ public class Usuarios implements Serializable {
     @ManyToOne
     private Roles rolid;
 
+    public Usuarios(Usuarios user) {
+        this.usuarioid = user.getUsuarioid();
+        this.cedula = user.getCedula();
+        this.nombres = user.getNombres();
+        this.apellidos = user.getApellidos();
+        this.nacimiento = user.getNacimiento();
+        this.direccion = user.getDireccion();
+        this.direccion2 = user.getDireccion2();
+        this.creado = user.getCreado();
+        this.modificado = user.getModificado();
+        this.telefono = user.getTelefono();
+        this.celular = user.getCelular();
+        this.correo = user.getCorreo();
+        this.clave = user.getClave();
+        this.usuariosTiendasList = user.getUsuariosTiendasList();
+        this.generoid = user.getGeneroid();
+        this.tipoidentificacionid = user.getTipoidentificacionid();
+        this.ciudadResidencia = user.getCiudadResidencia();
+        this.estadoid = user.getEstadoid();
+        this.rolid = user.getRolid();
+    }
+
     public Usuarios() {
+
     }
 
     public Usuarios(Integer usuarioid) {
@@ -294,5 +318,5 @@ public class Usuarios implements Serializable {
     public String toString() {
         return "co.com.tam.domain.Usuarios[ usuarioid=" + usuarioid + " ]";
     }
-    
+
 }

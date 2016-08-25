@@ -32,17 +32,11 @@ public class UsuariosController {
     @Autowired
     UsuariosDao repo;
 
-    @RequestMapping(value = "/nuevo.do", method = RequestMethod.GET)
-    public ModelAndView formCreateUser(ModelAndView mv) {
-        mv.setViewName("home/newUser");
-        return mv;
-    }
-    @RequestMapping(value = "/nuevo.do", method = RequestMethod.POST)
-    public ModelAndView createUser(ModelAndView mv,@Valid UsuariosDto user , BindingResult binding) {
-        mv.setViewName("home/newUser");
+    
+    @RequestMapping(value = {"/dashboard","/dashboard/"}, method = RequestMethod.GET)
+    public ModelAndView dashboard(ModelAndView mv,@Valid UsuariosDto user , BindingResult binding) {
+        mv.setViewName(Util.prop("view.dashboard"));
         
-        Usuarios domain = new Usuarios();
-        util.DtoToDomain(user, domain);
 
         return mv;
     }

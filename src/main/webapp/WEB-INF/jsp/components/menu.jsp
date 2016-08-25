@@ -5,7 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<nav class="navbar navbar-default navbar-fixed-top navbar-inverse ">
+<nav class="navbar navbar-default navbar-static-top navbar-inverse ">
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -25,7 +25,7 @@
         <div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li ><a href="#">Link </a></li>
-                <li><a href="#">Link</a></li>
+                <li><a href="/login?salir">salir</a></li>
             </ul>
             <form class="navbar-form navbar-left" role="search" onsubmit="return busquedaBasicaURL(document.getElementById('busqueda').value, document.getElementById('ubicado').value)" method="GET"  >
                 <div class="form-group">
@@ -46,28 +46,7 @@
 
 </nav>
 
-<!--Formulario escondido para enviar los archivos al controlador-->
-<form method="post" id="cargar" action="<%=request.getContextPath().toString()%>/form" enctype="multipart/form-data">
-    <input type="hidden" name="ruta" id="namefile" value="${ubicado}"/>
-    <input type="file" id="fileinput" name="file" style="display: none"/>
-</form>
 
-<style>
-    .glyphicon-refresh-animate {
-        -animation: spin .7s infinite linear;
-        -webkit-animation: spin2 .7s infinite linear;
-    }
-
-    @-webkit-keyframes spin2 {
-        from { -webkit-transform: rotate(0deg);}
-        to { -webkit-transform: rotate(360deg);}
-    }
-
-    @keyframes spin {
-        from { transform: scale(1) rotate(0deg);}
-        to { transform: scale(1) rotate(360deg);}
-    }
-</style>
 <br/>
 <br/>
 <br/>

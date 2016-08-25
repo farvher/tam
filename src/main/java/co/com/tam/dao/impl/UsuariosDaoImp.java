@@ -17,7 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
  *
  * @author geotor
  */
-@Repository
+@Repository(value = "repoUsuarios")
 @Transactional
 public class UsuariosDaoImp extends AbstractDao<Usuarios> implements UsuariosDao{
 
@@ -41,6 +41,11 @@ public class UsuariosDaoImp extends AbstractDao<Usuarios> implements UsuariosDao
     public List<Usuarios> getUsuarios() {
         return findAll();
         
+    }
+
+    @Override
+    public Usuarios getUser(String email) {
+       return findByFieldsIsEqual("correo", email).get(0);
     }
     
     

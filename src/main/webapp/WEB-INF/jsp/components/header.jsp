@@ -8,10 +8,19 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" href="<%=request.getContextPath().toString()%>/resources/img/favicon.ico"/>
+        <title>${titulo}</title>
+        <link href="<%=request.getContextPath().toString()%>/resources/css/bootstrap.css" rel='stylesheet' type='text/css' />
+         <link href="<%=request.getContextPath().toString()%>/resources/css/custom.css" rel='stylesheet' type='text/css' />
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="<%=request.getContextPath().toString()%>/resources/js/jquery.min.js"></script>
+    
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!--webfont-->
     </head>
-    <body>
-        <h1>Hello World!</h1>
-    </body>
-</html>
+    
+
+

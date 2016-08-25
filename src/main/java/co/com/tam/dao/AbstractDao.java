@@ -9,7 +9,6 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceContext;
-import javax.persistence.PersistenceUnit;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import org.springframework.transaction.annotation.Propagation;
@@ -23,8 +22,8 @@ public abstract class AbstractDao<T> {
 
     private Class<T> entityClass;
 
-    @PersistenceUnit
-    public EntityManagerFactory emf;
+//    @PersistenceUnit
+//    public EntityManagerFactory emf;
 
     @PersistenceContext
     public EntityManager em;
