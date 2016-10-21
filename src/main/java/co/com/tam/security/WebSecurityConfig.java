@@ -37,8 +37,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .authorizeRequests().antMatchers("/dashboard").access("hasRole('ROLE_ADMIN')")
-                .and()
+////                .authorizeRequests().antMatchers("/dashboard").access("hasRole('ROLE_ADMIN')")
+//                .and()
                 .formLogin()
                 .loginPage("/login")
                 .usernameParameter("email").passwordParameter("password")

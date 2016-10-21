@@ -5,7 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<nav class="navbar navbar-default navbar-static-top navbar-inverse ">
+<nav class="navbar nav-stacked navbar-default navbar-static-top navbar-inverse ">
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -27,24 +27,31 @@
                 <li ><a href="#">Link </a></li>
                 <li><a href="/login?salir">salir</a></li>
             </ul>
-            <form class="navbar-form navbar-left" role="search" onsubmit="return busquedaBasicaURL(document.getElementById('busqueda').value, document.getElementById('ubicado').value)" method="GET"  >
-                <div class="form-group">
-                    <input type="text" class="form-control " id="busqueda" name="busqueda" placeholder="Buscar ...">
-                </div>
-                <input type="submit" class="btn btn-default" value="Buscar">
-            </form>
 
-            <form class="navbar-form">
-                <a class="btn  btn-default" id="falseinput"> <span class="glyphicon glyphicon-upload"></span></a>
-                <a class="btn  btn-success" id="cargando" style="display: none">
-                    <span class="glyphicon glyphicon-refresh glyphicon-refresh-animate">
-                    </span>
-                </a>
-            </form>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 
 </nav>
+   Dashboard
+   
+   
+   
+          <ul class="nav nav-tabs nav-stacked">
+              <li><a href="#">opcion1</a>
+                  <ul>
+                      <li><a href="subopcion1" ></a> </li>
+                      <li><a href="subopcion1" ></a> </li>
+                      <li><a href="subopcion1" ></a> </li>
+                      <li><a href="subopcion1" ></a> </li>
+                      <li><a href="subopcion1" ></a> </li>
+                      <li><a href="subopcion1" ></a> </li>
+                      <li><a href="subopcion1" ></a> </li>
+                  </ul>
+              </li>
+              <li><a href="#">opcion2</a></li>
+          </ul>
+
+              
 
 
 <br/>
